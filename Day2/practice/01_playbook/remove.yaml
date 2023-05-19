@@ -1,0 +1,27 @@
+---
+- name: Remove Web Servers
+  hosts: target
+  
+  tasks: 
+  - name: Close http port
+    firewalld: 
+      immediate: yes
+      permanent: yes
+      service: http
+      state: disabled
+  - name: Remove Web Contents
+    file:
+      path: /var/www/html/index.html
+      state: absent
+  - name: Stop Service
+    service:
+      name: httpd
+      enabled: false
+      state: stopped
+    ignore_errors: true
+  - name: Remove httpd package
+    yum:
+      name: httpd
+      state: absent
+
+

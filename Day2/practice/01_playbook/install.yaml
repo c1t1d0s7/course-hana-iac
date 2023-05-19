@@ -1,0 +1,24 @@
+---
+- name: Install Web Servers
+  hosts: target
+  
+  tasks: 
+  - name: Install httpd Packages
+    yum: # ansible target -m yum -a 'name=httpd state=installed' -b
+      name: httpd
+      state: installed
+  - name: Enable/Start Service
+    service: # ansible target -m service -a 'name=httpd enabled=yes state=started' -b
+      name: httpd
+      enabled: yes
+      state: started
+  - name: Deploy Web Contents
+    copy: # ansible target -m copy -a 'content="hello" dest=/var/www/html/index.html' -b
+      content: hello
+      dest: /var/www/html/index.html
+  - name: Open http port
+    firewalld: # ansible target -m firewalld -a 'immediate=yes permanent=yes service=http state=enabled' -b
+      immediate: yes
+      permanent: yes
+      service: http
+      state: enabled

@@ -1,0 +1,13 @@
+---
+- hosts: target
+  gather_facts: no
+  vars:
+    message: Hello
+  tasks:
+  - copy:
+      src: origin.txt
+      dest: /tmp/copy.txt
+  - template:
+      src: origin.txt
+      dest: /tmp/template.txt
+      

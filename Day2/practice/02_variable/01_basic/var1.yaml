@@ -1,0 +1,15 @@
+---
+- hosts: target
+  vars:
+    message1: Hello
+    message2: World
+    message3: Korea
+
+  tasks:
+  - name: "{{ message1 }} Task"
+    debug:
+      msg: "{{ message1 }} {{ message2 }}"
+  - debug:
+      msg: "{{ message3 }}"
+  - debug:
+      var: message3

@@ -1,0 +1,9 @@
+---
+- hosts: target
+  #gather_facts: no # ansible target -m setup
+
+  tasks:
+  - debug:
+      msg: "{{ ansible_eth1.ipv4.address }}"
+  - debug:
+      msg: "{{ ansible_eth1['ipv4']['address'] }}"

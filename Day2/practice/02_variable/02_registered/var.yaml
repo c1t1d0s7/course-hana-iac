@@ -1,0 +1,13 @@
+---
+- hosts: target
+  tasks:
+  - file:
+      path: /tmp/a
+      state: absent
+    register: file_result
+  - debug:
+      msg: "{{ file_result }}"
+  - debug:
+      msg: "{{ file_result.path }}"
+  - debug:
+      msg: "{{ file_result['path'] }}"

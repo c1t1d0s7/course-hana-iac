@@ -1,0 +1,21 @@
+---
+- hosts: target
+  vars:
+    msg_string: Hello
+    msg_list:
+      - apple
+      - banana
+      - carrot
+    msg_dict:
+      item1: apple
+      item2: banaba
+
+  tasks:
+  - debug:
+      msg: "{{ msg_string }}"
+  - debug:
+      msg: "{{ msg_list[2] }}"
+  - debug:
+      msg: "{{ msg_dict.item1 }}"
+  - debug:
+      msg: "{{ msg_dict['item2'] }}"

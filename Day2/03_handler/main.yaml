@@ -1,0 +1,26 @@
+---
+- hosts: target
+  gather_facts: no
+  
+  tasks:
+  - name: T1
+    debug:
+  - name: T2
+    command: hostname
+    notify: # Changed=true
+    - "H2"
+    - "H1"
+  - name: T3
+    command: hostname
+    notify:
+    - "H1"
+  # - name: T4
+  #   command: /bin/false # Failure
+
+  handlers:
+  - name: H1
+    debug:
+      msg: "HANDLER1"
+  - name: H2
+    debug:
+      msg: "HANDLER2"

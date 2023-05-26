@@ -1,0 +1,13 @@
+- hosts: target
+  vars:
+    message: "hello world"
+  tasks:
+  - debug:
+      msg: "TS1"
+  - command: hostname
+    notify:
+      - "HD1"
+  handlers:
+  - name: "HD1"
+    debug:
+      msg: "HD1"

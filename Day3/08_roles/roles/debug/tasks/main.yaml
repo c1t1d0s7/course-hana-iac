@@ -1,0 +1,5 @@
+- debug:
+    msg: "TS1"
+- command: hostname
+  notify:
+    - "HD1"

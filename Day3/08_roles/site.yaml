@@ -1,0 +1,14 @@
+---
+- hosts: target
+  gather_facts: no
+
+  tasks:
+  - name: T1
+    debug:
+    
+  roles: 
+  - debug
+  # - web # roles/web
+  # - app # roles/app
+  # - proxy # roles/proxy
+  # - database # roles/database

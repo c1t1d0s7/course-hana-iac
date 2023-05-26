@@ -1,0 +1,6 @@
+- hosts: target
+  tasks:
+  - include_tasks: debug.yaml
+    loop:
+      - 1
+      - 2

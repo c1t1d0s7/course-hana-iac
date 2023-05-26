@@ -1,0 +1,9 @@
+- hosts: target
+  tasks:
+  - name: Task
+    debug:
+      msg: "Hello Tasks"
+  - name: Include Task
+    include_tasks: debug.yaml
+  - name: Import Task
+    import_tasks: debug.yaml

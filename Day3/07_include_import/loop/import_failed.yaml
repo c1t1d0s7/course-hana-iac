@@ -1,0 +1,7 @@
+- hosts: target
+  tasks:
+  # 실패
+  - import_tasks: debug.yaml
+    loop:
+      - 1
+      - 2

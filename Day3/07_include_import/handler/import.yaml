@@ -1,0 +1,8 @@
+- hosts: target
+  tasks:
+  - command: hostname
+    notify:
+      - "HANDLER1"
+  
+  handlers:
+  - import_tasks: handler.yaml

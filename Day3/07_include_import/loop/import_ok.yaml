@@ -1,0 +1,4 @@
+- hosts: target
+  tasks:
+  - import_tasks: debug_ok.yaml
+

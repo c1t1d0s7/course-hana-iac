@@ -1,0 +1,12 @@
+---
+- hosts: target
+  gather_facts: no
+  vars:
+    fruits:
+      - { name: "apple", count: 3 }
+      - { name: "banana", count: 10 }
+
+  tasks:
+  - debug:
+      msg: "{{ item.name }} - {{ item.count }}"
+    loop: "{{ fruits }}"

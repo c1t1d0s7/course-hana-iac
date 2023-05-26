@@ -1,0 +1,11 @@
+---
+- hosts: target
+  gather_facts: no
+  vars:
+    list_a: ["A", "B"]
+    list_b: ["X", "Y", "Z"]
+
+  tasks:
+  - debug:
+      msg: "{{ item[0] }} - {{ item[1] }}"
+    loop: "{{ list_a | product(list_b) | list }}"

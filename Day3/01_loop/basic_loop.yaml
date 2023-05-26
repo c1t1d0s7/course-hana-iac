@@ -1,0 +1,13 @@
+---
+- hosts: target
+  gather_facts: no
+  vars:
+    fruits:
+      - apple
+      - banana
+
+  tasks:
+  - debug:
+      msg: "{{ item }}"
+    loop:
+      - "{{ fruits }}"

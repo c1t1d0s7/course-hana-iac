@@ -1,0 +1,14 @@
+---
+- hosts: target
+  vars_files:
+    - variable.yaml
+  tasks:
+  - debug:
+      msg: "{{ message }}"
+  - debug:
+      msg: "{{ fruits }}"
+    ignore_errors: true
+  - include_vars: "variable2.yaml"
+  - debug:
+      msg: "{{ fruits }}"
+  

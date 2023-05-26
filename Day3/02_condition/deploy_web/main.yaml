@@ -25,7 +25,7 @@
       enabled: true
       state: started
     when:
-      - ansible_os_family == "Rocky"
+      - ansible_os_family == "RedHat"
   - service:
       name: apache2
       enabled: true
@@ -33,7 +33,7 @@
     when:
       - ansible_os_family == "Debian"
   - template:
-      src: "{{ item }}"
+      src: "{{ item }}.j2"
       dest: "/var/www/html/{{ item }}"
     loop:
       - "index.html"
@@ -44,7 +44,7 @@
       permanent: yes
       state: enabled
     when:
-      - ansible_os_family == "Rocky"
+      - ansible_os_family == "RedHat"
 
   handlers:
   - name: Restart Web Server

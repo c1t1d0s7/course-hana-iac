@@ -1,0 +1,21 @@
+---
+- hosts: target
+  vars:
+    switch: false
+
+  tasks:
+  - debug:
+      msg: "Rocky"
+    when:
+      - ansible_distribution == "Rocky"
+      - ansible_os_family == "RedHat"
+
+  - debug:
+      msg: "Ubuntu"
+    when:
+      - ansible_distribution == "Ubuntu"
+      - ansible_os_family == "Debian"
+
+  - debug:
+      msg: "Switch On"
+    when: switch

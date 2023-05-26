@@ -1,0 +1,21 @@
+- hosts: target
+  tasks:
+  - name: "T1"
+    debug:
+      msg: "TASK1"
+    tags: 
+    - debug
+    - devel
+  - name: "T2"
+    debug:
+      msg: "TASK2"
+    tags: devel
+  - name: "T3"
+    debug:
+      msg: "TASK3"
+    tags: debug
+  - name: "T4"
+    debug:
+      msg: "TASK4"
+
+# ansible-playbook tag.yaml --tags "debug","devel"

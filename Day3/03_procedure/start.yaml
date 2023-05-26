@@ -1,0 +1,14 @@
+- hosts: target
+  tasks:
+  - name: "T1"
+    debug:
+      msg: "TASK1"
+  - name: "T2"
+    debug:
+      msg: "TASK2"
+  - name: "T3"
+    debug:
+      msg: "TASK3"
+  - name: "T4"
+    debug:
+      msg: "TASK4"

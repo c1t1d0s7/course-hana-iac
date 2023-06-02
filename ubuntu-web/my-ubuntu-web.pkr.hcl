@@ -9,8 +9,8 @@ packer {
 source "amazon-ebs" "linux" {
   #access_key = "AKIAXXX"
   #secret_key = "bbyBXXX"
-  region        = "ap-northeast-2"
-  profile       = "default"
+  region  = "ap-northeast-2"
+  profile = "default"
 
   ami_name      = "mylinux"
   instance_type = "t2.micro"

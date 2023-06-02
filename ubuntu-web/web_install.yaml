@@ -1,0 +1,10 @@
+---
+- name: Web Install
+  hosts: default
+ 
+  tasks:
+  - name: Install Apache2
+    apt:
+      name: apache2
+      state: present
+      

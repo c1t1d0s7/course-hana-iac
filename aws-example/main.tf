@@ -10,11 +10,13 @@ module "my_vpc" {
 }
 
 resource "aws_instance" "my_instance" {
+  count = var.instances_per_subnet * length(module.my_vpc.public_subnets)
+
   ami           = data.aws_ami.ubuntu_focal.id
   instance_type = var.instance_type
 
   #key_name               = aws_key_pair.my_sshkey.key_name
-  subnet_id              = module.my_vpc.public_subnets[0]
+  subnet_id              = module.my_vpc.public_subnets[count.index % length(module.my_vpc.public_subnets)]
   vpc_security_group_ids = [aws_security_group.my_sg_web.id]
 
   # 1. Heredoc
@@ -39,8 +41,10 @@ resource "aws_instance" "my_instance" {
 ##> ssh-keygen -f "my_sshkey" -N ''
 
 resource "aws_eip" "my_eip" {
+  count = var.instances_per_subnet * length(module.my_vpc.public_subnets)
+
   vpc      = true
-  instance = aws_instance.my_instance.id
+  instance = aws_instance.my_instance[count.index].id
 
   tags = local.common_tags
 }

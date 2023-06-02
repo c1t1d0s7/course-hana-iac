@@ -1,5 +1,5 @@
 resource "aws_instance" "my_instance" {
-  ami           = var.ami_image[var.aws_region]
+  ami           = data.aws_ami.ubuntu_focal.id
   instance_type = var.instance_type
 
   tags = local.common_tags

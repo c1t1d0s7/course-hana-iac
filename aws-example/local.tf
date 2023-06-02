@@ -5,3 +5,5 @@ locals {
     Environment = var.environment
   }
 }
+
+# local.common_tags

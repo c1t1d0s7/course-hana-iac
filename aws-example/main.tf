@@ -1,33 +1,13 @@
-resource "aws_instance" "my_instance_a" {
-  ami           = "ami-048299d2b7b438e05"
-  instance_type = "t2.micro"
+resource "aws_instance" "my_instance" {
+  ami           = var.ami_image[var.aws_region]
+  instance_type = var.instance_type
 
-  tags = {
-    Name = "MyInstanceA"
-  }
-}
-
-resource "aws_instance" "my_instance_b" {
-  ami           = "ami-048299d2b7b438e05"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "MyInstanceB"
-  }
-
-  depends_on = [aws_s3_bucket.my_bucket]
+  tags = local.common_tags
 }
 
 resource "aws_eip" "my_eip" {
   vpc      = true
-  instance = aws_instance.my_instance_a.id
-}
+  instance = aws_instance.my_instance.id
 
-resource "aws_s3_bucket" "my_bucket" {
-  # name = "BUCKET_NAME"
+  tags = local.common_tags
 }
-
-#resource "aws_s3_bucket_acl" "my_bucket_acl" {
-#  bucket = aws_s3_bucket.my_bucket.id
-#  acl    = "private"
-#}
